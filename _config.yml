@@ -24,4 +24,6 @@ kramdown:
 sass:
   sass_dir: bower_components/bootstrap-sass/assets/stylesheets
   style: compressed
+gems:
+ - jekyll-coffeescript
 
