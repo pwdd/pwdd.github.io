@@ -23,20 +23,21 @@ img {
 pre,
 code {
   font-size: 15px;
-  border-radius: 3px;
-  background-color: #122b3b;
+  background-color: #f7f7f7;
 }
 
 code {
   padding: 1px 5px;
   &.highlighter-rouge {
-      background-color: #eef;
+      background-color: #f7f7f7;
   }
 }
 
 pre {
   padding: 8px 12px;
   overflow-x: auto;
+  border-radius: 0;
+  border: 0;
 
   > code {
       border: 0;

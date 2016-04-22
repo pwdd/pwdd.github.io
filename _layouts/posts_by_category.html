@@ -1,0 +1,29 @@
+---
+layout: default
+---
+
+<header class="underline page-title">
+  <h1>
+    <small>category: <strong>{{ page.category }}</strong></small>
+  </h1>
+</header>
+
+{% if site.categories[page.category] %}
+  {% for post in site.categories[page.category] %}
+    <article class="post">
+      <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">
+        <header class="text-center post-title index">
+          <div class="date-index">
+           {{ post.date | date: "%b %-d, %Y" }}
+          </div>
+          <h2>{{ post.title }}</h2>
+          <div class="post-excerpt">
+            {{ post.excerpt }}
+        </div>
+        </header>
+      </a>
+    </article>
+  {% endfor %}
+{% else %}
+  <p>There are no posts in this category.</p>
+{% endif %}

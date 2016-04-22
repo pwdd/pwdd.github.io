@@ -1,0 +1,29 @@
+---
+layout: default
+---
+
+<header class="underline page-title">
+  <h1>
+    <small>tag: <strong>{{ page.tag }}</strong></small>
+  </h1>
+</header>
+
+{% if site.tags[page.tag] %}
+   {% for post in site.tags[page.tag] %}
+      <article class="post">
+        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">
+          <header class="text-center post-title index">
+            <div class="date-index">
+             {{ post.date | date: "%b %-d, %Y" }}
+            </div>
+            <h2>{{ post.title }}</h2>
+            <div class="post-excerpt">
+              {{ post.excerpt }}
+          </div>
+          </header>
+        </a>
+      </article>
+  {% endfor %}
+{% else %}
+  <p>There are no posts for this tag.</p>
+{% endif %}
