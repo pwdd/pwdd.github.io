@@ -95,3 +95,13 @@ a {
 .page-title {
   margin-bottom: 70px;
 }
+
+.tags-index {
+  @extend .list-unstyled;
+  li:before {
+    content: "\2014";
+    color: $light_grey;
+    margin-right: 15px;
+  }
+}
+
