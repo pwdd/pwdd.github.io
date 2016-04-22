@@ -1,38 +1,31 @@
-<footer class="site-footer">
-
-  <div class="wrapper">
-
-    <h2 class="footer-heading">{{ site.title }}</h2>
-
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li>{{ site.title }}</li>
-          <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+<footer id="contact">
+  <div class="container">
+    <nav>
+      <div class="pull-right">
+        <ul class="list-inline social">
+          <li>
+            <a href="mailto:{{ site.email }}">
+              <span class="fa fa-envelope"></span>
+            </a>
+          </li>
+          <li>
+            <a href="https://linkedin.com/in/ainapinto" target="_blank">
+              <span class="fa fa-linkedin"></span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/pwdd" target="_blank">
+              <span class="fa fa-github"></span>
+            </a>
+          </li>
         </ul>
       </div>
-
-      <div class="footer-col footer-col-2">
-        <ul class="social-media-list">
-          {% if site.github_username %}
-          <li>
-            {% include icon-github.html username=site.github_username %}
-          </li>
-          {% endif %}
-
-          {% if site.twitter_username %}
-          <li>
-            {% include icon-twitter.html username=site.twitter_username %}
-          </li>
-          {% endif %}
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-3">
-        <p>{{ site.description }}</p>
-      </div>
-    </div>
-
+    </nav>
   </div>
-
 </footer>
+
+<script
+        src="https://code.jquery.com/jquery-2.2.3.min.js"
+        integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
+        crossorigin="anonymous"></script>
+<script src="{{ site.baseurl }}/bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>

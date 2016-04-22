@@ -1,0 +1,38 @@
+.navbar {
+
+  &.navbar-default {
+    padding-top: 20px;
+    background-color: $body-bg;
+    border-radius: 0;
+    border: 0;
+    color: $body-font-color;
+
+    .navbar-brand {
+      font-weight: bold;
+      font-size: 1.3em;
+      color: $body-font-color;
+      letter-spacing: 0.2em;
+      &:hover {
+        color: $body-font-color;
+        border-bottom: 0;
+      }
+    }
+  }
+
+  .navbar-nav {
+    li {
+      a {
+        color: $body-font-color;
+        &:hover {
+          color: $blue;
+          text-decoration: none;
+          border-bottom: 1px solid $light_grey;
+        }
+      }
+    }
+  }
+}
+
+.page-link {
+  text-transform: lowercase;
+}

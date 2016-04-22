@@ -21,4 +21,7 @@ github_username:  pwdd
 markdown: kramdown
 kramdown:
   input: GFM
+sass:
+  sass_dir: bower_components/bootstrap-sass/assets/stylesheets
+  style: compressed
 

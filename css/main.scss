@@ -3,51 +3,41 @@
 ---
 @charset "utf-8";
 
+/* custom variable */
+$body-bg: #fff;
+$body-font-color: #333;
+$body-font-size: 20px;
+$body-font-family: 'Quattrocento', 'Georgia', sans-serif;
+$light_grey: #ccc;
+$grey: #a6a6a6;
+$dark_grey: #666;
+$blue: #000080;
+$red: #b30000;
+$green: #006600;
 
 
-// Our variables
-$base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$base-font-size:   16px;
-$base-font-weight: 400;
-$small-font-size:  $base-font-size * 0.875;
-$base-line-height: 1.5;
-
-$spacing-unit:     30px;
-
-$text-color:       #111;
-$background-color: #fdfdfd;
-$brand-color:      #2a7ae2;
-
-$grey-color:       #828282;
-$grey-color-light: lighten($grey-color, 40%);
-$grey-color-dark:  darken($grey-color, 25%);
-
-// Width of the content area
-$content-width:    800px;
-
-$on-palm:          600px;
-$on-laptop:        800px;
-
-
-
-// Use media queries like this:
-// @include media-query($on-palm) {
-//     .wrapper {
-//         padding-right: $spacing-unit / 2;
-//         padding-left: $spacing-unit / 2;
-//     }
-// }
-@mixin media-query($device) {
-    @media screen and (max-width: $device) {
-        @content;
+@mixin prefix($map, $vendors: webkit moz ms o) {
+  @each $prop, $value in $map {
+    @if $vendors {
+      @each $vendor in $vendors {
+        #{"-" + $vendor + "-" + $prop}: #{$value};
+      }
     }
+    #{$prop}: #{$value};
+  }
 }
 
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
 
-
-// Import partials from `sass_dir` (defaults to `_sass`)
-@import
-        "base",
-        "layout",
-        "syntax-highlighting"
-;
+@import "bootstrap";
+@import "../../../../css/base";
+@import "../../../../css/navbar";
+@import "../../../../css/post";
+@import "../../../../css/syntax-highlighting";
+@import "../../../../css/footer";
