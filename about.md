@@ -4,4 +4,6 @@ title: about
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+**Author:** Journalist turned into programmer. Student apprentice at [8th Light](http://8thlight.com)
+
+**Blog:** Things I learn during my apprenticeship
