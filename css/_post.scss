@@ -41,8 +41,10 @@
   margin-bottom: 50px;
   a {
     color: $blue;
+    font-weight: bold;
     &:hover {
       color: $grey;
+      font-weight: bold;
     }
   }
 }

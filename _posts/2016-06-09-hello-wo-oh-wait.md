@@ -3,7 +3,7 @@ layout: post
 title:  "HELLO, WORL... Oh, wait! Where am I?"
 date:   2016-06-09 10:33:58 -0700
 category: apprenticeship
-tags: [clojure, TDD]
+tags: [clojure]
 ---
 
 As soon as I started working as a reporter some years ago, I heard about a guy who used to work at the same newspaper. He was famous for the things he wouldn't do.

@@ -2,7 +2,7 @@
 layout: default
 ---
 
-{% for post in site.posts reversed %}
+{% for post in site.posts %}
   <article class="post">
     <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">
       <header class="text-center post-title index">

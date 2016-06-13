@@ -26,4 +26,3 @@ sass:
 gems:
  - jekyll-coffeescript
 excerpt_separator: <!--more-->
-
