@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Implementing Polymorphic Clojure Functions"
+title:  "Implementing Polymorphic Functions"
 date:   2016-07-01 11:48:58 -0700
 category: apprenticeship
 tags: [clojure]
