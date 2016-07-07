@@ -20,7 +20,7 @@ In the [negamax](https://en.wikipedia.org/wiki/Negamax) algorithm &mdash; that i
 
 In order to get a position value, from the current player perspective, it is necessary to give each player a value. The unbeatable computer has the value `1`, while the opponent has the value `-1`. The base case is the game over, and the returned value is the analysis of the board multiplied by the value of a player.
 
-Considering the following situation (computer is 'o', opponent is 'x'). It is now time for the computer to play:
+Considering the following situation (computer is 'o'). It is now time for the computer to play:
 
 ```
  o | x | 3
@@ -44,7 +44,7 @@ The base case can be written like this:
 
 The analysis of the board can be done in many ways. The important thing is to maintain the idea that, if a board has the value `+Infinity` to one player, the same board necessarily has the value `-Infinity` to the other player.
 
-One of the things that can be added to make the computer *smarter* is the value of the `depth`. Considering this board (computer is 'o', opponent is 'x'):
+One of the things that can be added to make the computer *smarter* is the value of the `depth`. Considering this board (computer is 'o'):
 
 ```
  o | x | 3
@@ -70,8 +70,6 @@ The board analysis could be written like this:
       :else
         0)))
 ```
-
-One of my missteps was with the board evaluation. I was using `(+ 10 depth)` and `(- 10 depth)`, which means that a board could have the value `8` for a player and, at the same time `12` for the other player &mdash; and it was not a zero sum game anymore!
 
 # How to get the best position
 
@@ -160,4 +158,4 @@ The other thing that I learned while doing this was about [`memoize`](http://clo
 ; 2
 ```
 
-I didn't came up with the `negamax` implementation without looking lots of other implementations. The way recursion works really got me for a long time, specially because I thought I would be dealing with an integer when I was in fact getting a collection. So, after I had it working, I deleted it and wrote it again. Twice. I wanted to make sure that I understood what I was doing and that I was able to write it again. I think that now I do. And I've been secretly thinking how much fun it would be to do the same project using other languages as well, just to see the difference between then. 
+I didn't came up with the `negamax` implementation without looking lots of other implementations. The way recursion works really got me for a long time, specially because I thought I would be dealing with an integer when I was in fact getting a collection. So, after I had it working, I deleted it and wrote it again. Twice. I wanted to make sure that I understood what I was doing and that I was able to write it again. I think that now I do. And I've been secretly thinking how much fun it would be to do the same project using other languages as well, just to see the difference between then.
