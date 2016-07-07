@@ -12,7 +12,7 @@ During the implementation of the [minimax](http://pwdd.github.io/post/minimax-in
 
 It was not in the minimax implementation, but in a function used to create `Player` records. `make-player` would create a `Player` with value `1` if it was an AI, and `-1` if it was not. Because of that, both the easy computer and the unbeatable computer had value `1`. That was breaking the [base case](http://pwdd.github.io/post/minimax-in-clojure/#the-base-case), that should return the board evaluation from the current player perspective.
 
-After fixing that, it was time to work with a more mysterious bug: the unbeatable computer would not loose, but instead of making the winner move as soon as possible, it would take the game to the last state. For instance, in the following board (unbeatable computer is 'o'):
+After fixing that, it was time to work with a more mysterious bug: the unbeatable computer would not lose, but instead of making the winner move as soon as possible, it would take the game to the last state. For instance, in the following board (unbeatable computer is 'o'):
 
 ```
  o | x | x

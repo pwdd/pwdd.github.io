@@ -31,41 +31,41 @@ That worked alright until the next step of the project: add an unbeatable comput
 The first solution I tried was to use a `protocol`, a set of methods that must be implemented by all data structures that extend it. This is a simple example of a `protocol` and how it can be used:
 
 ```clojure
-; all data structures that use the protocol 'Stringfication'
-; must implement 'stringfy' and 'shout'
+; all data structures that use the protocol 'Stringification'
+; must implement 'stringify' and 'shout'
 
-(defprotocol Stringfication
-  (stringfy [this])
+(defprotocol Stringification
+  (stringify [this])
   (shout [this]))
 
 ; extend vectors
 (extend-type clojure.lang.PersistentVector
-  Stringfication
-  (stringfy [this] (clojure.string/join (map str this)))
-  (shout [this] (str (clojure.string/upper-case (stringfy this)) "!!!"))))
+  Stringification
+  (stringify [this] (clojure.string/join (map str this)))
+  (shout [this] (str (clojure.string/upper-case (stringify this)) "!!!"))))
 
 ; extend integers
 (extend-type java.lang.Long
-  Stringfication
-  (stringfy [this] (str this))
+  Stringification
+  (stringify [this] (str this))
   (shout [this] (str this "!!!")))
 
 ; extend strings
 (extend-type java.lang.String
-  Stringfication
-  (stringfy [this] this)
+  Stringification
+  (stringify [this] this)
   (shout [this] (str (clojure.string/upper-case this) "!!!")))
 
 ; handling vectors
-(stringfy ["a" 1 2]) ;-> "a12"
+(stringify ["a" 1 2]) ;-> "a12"
 (shout [1 2 a]) ;-> "12A!!!"
 
 ; handing integers
-(stringfy 1) ;-> "1"
+(stringify 1) ;-> "1"
 (shout 1) ;-> "1!!!"
 
 ; handling strings
-(stringfy "foo") ;-> "foo"
+(stringify "foo") ;-> "foo"
 (shout "foo") ;-> "FOO!!!"
 ```
 

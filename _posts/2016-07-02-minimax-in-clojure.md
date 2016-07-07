@@ -30,7 +30,7 @@ Considering the following situation (computer is 'o'). It is now time for the co
  7 | 8 | 9  
 ```
 
-If the computer chooses any position other than 8, it gives the chance for the opponent to win. For instance, let's say the computer picks the position 4. It does not win the game, so the value would be, let's say, `0`. Then, it is time for the opponent to play &mdash; and it chooses the position 8. The game is over. That means that, for the computer, the value of the game when it is over could be `-10` (it looses) and, for the opponent, `10`. That is why we give the opponent the value `-1`, so when the computer is evaluating the board, `(* -1 -10)` becomes `10`, and the computer knows that 8th is a valuable position (it does not win the game, but avoids the opponent's victory).
+If the computer chooses any position other than 8, it gives the chance for the opponent to win. For instance, let's say the computer picks the position 4. It does not win the game, so the value would be, let's say, `0`. Then, it is time for the opponent to play &mdash; and it chooses the position 8. The game is over. That means that, for the computer, the value of the game when it is over could be `-10` (it loses) and, for the opponent, `10`. That is why we give the opponent the value `-1`, so when the computer is evaluating the board, `(* -1 -10)` becomes `10`, and the computer knows that 8th is a valuable position (it does not win the game, but avoids the opponent's victory).
 
 The base case can be written like this:
 
