@@ -93,7 +93,7 @@ The solution for that was to use `around` to stub the string outputted by `promp
 
 In this case, `with-out-str` stub the output, **including the escape sequence used to clear the screen**.
 
-Inside the tests that call `prompt`, I did the same and the recursive tests were fixed:
+Inside the tests that call `prompt`, I did the same, and the recursive tests were fixed:
 
 ```clojure
 (describe "get-marker"
