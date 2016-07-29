@@ -6,7 +6,7 @@ category: apprenticeship
 tags: [TDD]
 ---
 
-One of my recent assignments was to pair with another apprentice in the [Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life). What was weird at first was the requirement to throw the code away after the game was done. <!--more--> The idea was to build it, delete it, build it again in another language, always following the [Three Rules of TDD](http://butunclebob.com/ArticleS.UncleBob.TheThreeRulesOfTdd).
+One of my recent assignments was to pair with another apprentice in the Game of Life. What was weird at first was the requirement to throw the code away after the game was done. <!--more--> The idea was to build it, delete it, build it again in another language, always following the [Three Rules of TDD](http://butunclebob.com/ArticleS.UncleBob.TheThreeRulesOfTdd).
 
 There were many great things about that experience. One of them was the chance to work with someone in a project starting from scratch, always discussing the best and/or easier way to implement some things. Another one was exactly the fact that I could throw code away.
 
