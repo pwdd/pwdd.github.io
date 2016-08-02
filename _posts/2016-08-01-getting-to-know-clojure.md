@@ -11,6 +11,7 @@ It's been two months since I started learning Clojure and I think I'm finally le
 This is the definition of `if-let`:
 
 > bindings => binding-form test
+>
 > If test is true, evaluates then with binding-form bound to the value of test, if not, yields else
 
 I have no clue of what that means and there is no solution for that. That's why I'm trying to let it go. Stop complaining and start trying it out. Here is the `if-let` *in action*:
