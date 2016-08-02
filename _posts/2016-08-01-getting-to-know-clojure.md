@@ -37,7 +37,9 @@ I have no clue of what that means and there is no solution for that. That's why 
 ;-> nil
 
 ;; Note that it does not mean that 'x' was bound to 'nil'.
-;; If the expression evaluated to 'false', it would return 'nil', like in the example below:
+;; If the expression evaluated to 'false', it would return 'nil',
+;; like in the example below:
+
 (if-let [x (contains? [1 2 3] 3)]
   x)
 ;-> nil
@@ -45,7 +47,7 @@ I have no clue of what that means and there is no solution for that. That's why 
 
 ## `when-let`
 
-This one is similar, but it uses the `when` logic (*when something is true, do this; there is not 'else'*)
+This one is similar, but it uses the `when` logic (*when something is true, do this; there is no 'else'*)
 
 ```clojure
 (when-let [x (get [1 2 3] 0)]
@@ -55,7 +57,7 @@ This one is similar, but it uses the `when` logic (*when something is true, do t
 ;-> 2
 ```
 
-## Getting multiple elements from a vector
+## Multiple elements from a vector
 
 ### With `mapv`
 
