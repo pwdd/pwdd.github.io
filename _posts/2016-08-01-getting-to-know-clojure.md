@@ -45,6 +45,8 @@ I have no clue of what that means and there is no solution for that. That's why 
 ;-> nil
 ```
 
+Other things that I learned by trying it out:
+
 ## `when-let`
 
 This one is similar, but it uses the `when` logic (*when something is true, do this; there is no 'else'*)
