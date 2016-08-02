@@ -6,7 +6,7 @@ category: apprenticeship
 tags: [clojure]
 ---
 
-It's been two months since I started learning Clojure and I think I'm finally letting it go my problem with the documentation that is, for me, one of the most complicated things about the language. <!--more-->
+It's been two months since I started learning Clojure and I think I'm finally letting it go my problem with the documentation &mdash; that is, for me, one of the most complicated things about the language. <!--more-->
 
 This is the definition of `if-let`:
 
