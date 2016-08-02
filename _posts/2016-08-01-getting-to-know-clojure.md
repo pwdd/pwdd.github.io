@@ -6,9 +6,9 @@ category: apprenticeship
 tags: [clojure]
 ---
 
-It's been two months since I started learning Clojure and I think I'm starting to finally let it go my problem with the documentation. No, not really. <!--more-->
+It's been two months since I started learning Clojure and I think I'm finally letting it go my problem with the documentation that is, for me, one of the most complicated things about the language. <!--more-->
 
-One of the things that, for me, is the most complicated about Clojure is its documentation. This is the definition of `if-let`:
+This is the definition of `if-let`:
 
 > bindings => binding-form test
 > If test is true, evaluates then with binding-form bound to the value of test, if not, yields else
