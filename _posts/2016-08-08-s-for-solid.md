@@ -43,7 +43,7 @@ We know if **a function has only one reason to change** by making sure that the 
 
 At first, it seems reasonable that making a move only happens after checking if the `position` is valid. But, doesn't it seems more reasonable that `move` accepts only valid arguments? Why are we not checking if `board` or `marker` are valid?
 
-Right now, getting input from user would be something like this:
+If `move` changes for whatever reason, we will also have to change things that now depend on it. The cascade effect is what we try to avoid. Right now, getting input from user would be something like this:
 
 ```clojure
 ; a messy way to get user input
@@ -55,7 +55,7 @@ Right now, getting input from user would be something like this:
       (recur))))
 ```
 
-It would be much simpler like this:
+It would be simpler like this:
 
 ```clojure
 (defn get-input
@@ -66,7 +66,7 @@ It would be much simpler like this:
       (recur))))
 ```
 
-We can then pass the returned value from `get-input` to `move`, that could be re-written like this:
+Is `get-input` doing more than one thing? Well, it is if we think that it gets the input and checks if it is valid. But it is not if we consider that `get-input` returns a valid input and only that. So we can then pass the returned value from `get-input` to `move`, that could be re-written like this:
 
 ```clojure
 (defn move
