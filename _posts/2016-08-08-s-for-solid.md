@@ -31,9 +31,11 @@ In the `move` example, the function:
 2. associates `marker` in the `board`, and
 3. returns `false` otherwise.
 
-Guessing is not a job for developers. It is impossible to know what will be the reason that will make that function to change. It could be because `is-valid?` will take the `board` as an argument; or that `board` will become a `record` and `assoc` will not work anymore; or that `false` will be `true`.
+That means: when change comes, bad things will happen...  
 
-These guesses can go on forever. So, instead of trying to predict the future, we would ideally organize things in a way that makes changes easier when they happen. That is when the design principles come in: they are guidelines that help us be ready for changes.
+Guessing the dark future is not a job for developers. It is impossible to know what will be the reason that will make that function to change. It could be because `is-valid?` will change its logic; or that `board` will become a `record` and `assoc` will not work anymore; or that `false` will be `true`.
+
+These guesses can go on forever. So, instead of trying to predict the future, we would ideally organize things in a way that makes it easier to make changes. That is when the design principles come in handy: they are guidelines that help us be ready for changes.
 
 ## How much is one?
 
