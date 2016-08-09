@@ -6,7 +6,7 @@ category: apprenticeship
 tags: [design-principles]
 ---
 
-The popular wisdom says that "He who chases two rabbits will catch neither", or "Don't spread yourself too thin". The meaning of such sayings is that it is difficult to do more than one thing at a time. Just like people, classes, modules and functions are also not good at multitasking.<!--more-->
+The popular wisdom says that "He who chases two rabbits will catch neither", or "Don't spread yourself too thin". Just like people, classes, modules and functions are also not good at multitasking.<!--more-->
 
 Considering this function:
 
@@ -21,17 +21,19 @@ Considering this function:
 
 It is doing more than one thing and violating the [Single Responsibility Principle (SRP)](https://en.wikipedia.org/wiki/Single_responsibility_principle) &mdash; the *S* from [*SOLID*](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)).
 
-The SRP states that a function, a class or a module must have only one reason to change &mdash; which means it should have just one responsibility. In a [great article](https://8thlight.com/blog/uncle-bob/2014/05/08/SingleReponsibilityPrinciple.html)) about it, Robert Martin (who coined the name of the principle) compares it to a business logic: in a company, the COO, CTO and CFO are all in the same hierarchic level, responding to the CEO; and we don't want to get the COO fired because of a change requested by the CTO. Both COO and CTO should be responsible only for the things related to their department.
+The SRP states that a function, a class or a module must have only one reason to change &mdash; which means it should have just one responsibility. In a [great article](https://8thlight.com/blog/uncle-bob/2014/05/08/SingleReponsibilityPrinciple.html) about it, Robert C. Martin compares it to responsibilities of people in a company: the COO, CTO and CFO are all in the same hierarchic level and they respond to the CEO; and we don't want to get the COO fired because of a change requested by the CTO. Both COO and CTO should be only responsible for the things related to their area.
 
-In that example, `move` is doing too much. It
+## How can a function do too much?
+
+In the `move` example, the function:
 
 1. checks if `position` is valid,
 2. associates `marker` in the `board`, and
-3. returns `false` for some mysterious reason, making it difficult to get the *purpose* of the function.
+3. returns `false` otherwise.
 
-Guessing what will be the reason that will make an application change is not a job for developers. It could be because `is-valid?` will take the `board` as an argument; or that `board` will become a `record` and `assoc` will not work anymore; or that `false` will be `true`.
+Guessing is not a job for developers. It is impossible to know what will be the reason that will make that function to change. It could be because `is-valid?` will take the `board` as an argument; or that `board` will become a `record` and `assoc` will not work anymore; or that `false` will be `true`.
 
-This guesses can go on forever. So, instead of trying to make guesses, we would ideally organize things in a way that makes changes easier. That is when the design principles come in: they are guidelines that help us be ready for changes.
+These guesses can go on forever. So, instead of trying to predict the future, we would ideally organize things in a way that makes changes easier when they happen. That is when the design principles come in: they are guidelines that help us be ready for changes.
 
 ## How much is one?
 
@@ -70,10 +72,10 @@ We can then pass the returned value from `get-input` to `move`, that could be re
   (assoc board position marker))
 ```
 
-Now it is a function that does only one thing: associates a `marker` to a `board` in a given `position`. A good trick is to try to explain what a function does in just one sentence, without using words like *and* and *or*.
+Now `move` is a function that does only one thing: associates a `marker` to a `board` in a given `position`. A good trick is to try to explain what a function does in just one sentence, without using words like *and* and *or*.
 
 ## The benefits of SRP diet
 
-**Writing tests** for the second `move` example would be a lot simpler than trying to test the possible cases for the first `move` example. Instead of checking if `move` can take an invalid argument, and if it makes a move, and if it returns false, we can instead check only if it associates a value to the `board`.
+**It is easier to test** the second `move` example. Assuming that the arguments are valid, we just need to make sure that it does what it says it does: put a `marker` on the `board`.  If we try to test the first example, we would have to cover a lot more: check if `move` has an invalid `position`, if it makes a move, and if it returns `false`.
 
-Having a function doing only one thing reduces the risk of a change to have consequences in multiple points in the program. It also makes things more **reasonable**: a small change does not turn into a bigger job than it should be.
+Another benefit is that having a function doing only one thing **reduces the risk of a change to have consequences in multiple places in the program**. It also makes things more **reasonable**: a small change does not turn into a bigger job than it should be.
