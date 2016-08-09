@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "\"S\", from SOLID"
+title:  "\"S\" for SOLID"
 date:   2016-08-08 19:50:35 -0500
 category: apprenticeship
 tags: [design-principles]
