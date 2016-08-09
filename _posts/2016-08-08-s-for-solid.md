@@ -6,7 +6,7 @@ category: apprenticeship
 tags: [design-principles]
 ---
 
-The popular wisdom says that "He who chases two rabbits will catch neither", or "Don't spread yourself too thin". Just like people, classes, modules and functions are also not good at multitasking.<!--more-->
+The popular wisdom says that "He who chases two rabbits will catch neither", or "Don't spread yourself too thin". Just like people, classes, modules and functions are also not good at multitasking.<!--more--> It does not mean that they are unable to do multiple things; it is that they shouldn't.
 
 Considering this function:
 
@@ -21,7 +21,7 @@ Considering this function:
 
 It is doing more than one thing and violating the [Single Responsibility Principle (SRP)](https://en.wikipedia.org/wiki/Single_responsibility_principle) &mdash; the *S* in  [*SOLID*](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)).
 
-The SRP states that a function, a class or a module must have only one reason to change &mdash; which means it should have just one responsibility. Robert C. Martin, who elaborated the concept of SOLID design, [once explained](https://8thlight.com/blog/uncle-bob/2014/05/08/SingleReponsibilityPrinciple.html) the SRP by comparing it to responsibilities of people in a company: the COO, CTO and CFO are all in the same hierarchic level and they respond to the CEO; and we don't want to get the COO fired because of a change requested by the CTO. Both COO and CTO should be only responsible for the things related to their area.
+The SRP states that a function, a class or a module must have only one reason to change &mdash; which means it should have just one responsibility. Robert C. Martin, who elaborated the concept of SOLID design, [once explained](https://8thlight.com/blog/uncle-bob/2014/05/08/SingleReponsibilityPrinciple.html) the SRP by comparing it to responsibilities of people in a company: the COO, CTO and CFO are all in the same hierarchic level, and they respond to the CEO. One should not be hold responsible for someone else's actions, because we don't want to get the COO fired because of a change requested by the CTO. Both COO and CTO should be only responsible for the things related to their area.
 
 ## How can a function do too much?
 
@@ -39,7 +39,7 @@ These guesses can go on forever. So, instead of trying to predict the future, we
 
 ## How much is one?
 
-We know if **a function has only one reason to change** by making sure that the function does only one thing. But, **what exactly is just one thing?**
+We know that **a function has only one reason to change** by making sure that the function does only one thing. But, **what exactly is just one thing?**
 
 At first, it seems reasonable that making a move only happens after checking if the `position` is valid. But, doesn't it seems more reasonable that `move` accepts only valid arguments? Why are we not checking if `board` or `marker` are valid?
 
@@ -55,7 +55,7 @@ If `move` changes for whatever reason, we will also have to change things that n
       (recur))))
 ```
 
-It would be simpler like this:
+`get-input` depends on `move` and also does too much: it asks for input and makes a move. It would be simpler like this:
 
 ```clojure
 (defn get-input
@@ -66,7 +66,7 @@ It would be simpler like this:
       (recur))))
 ```
 
-Is `get-input` doing more than one thing? Well, it is if we think that it gets the input and checks if it is valid. But it is not if we consider that `get-input` returns a valid input and only that. So we can then pass the returned value from `get-input` to `move`, that could be re-written like this:
+Is `get-input` still doing more than one thing? Well, it is if we think that it gets the input and checks if it is valid. But it is not if we consider that `get-input` returns a valid input and only that. So we can then pass the returned value from `get-input` to `move`, that could be re-written like this:
 
 ```clojure
 (defn move
