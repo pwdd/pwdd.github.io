@@ -6,7 +6,7 @@ category: apprenticeship
 tags: [design-principles]
 ---
 
-The popular wisdom says that "He who chases two rabbits will catch neither", or "Don't spread yourself too thin". The meaning of such sayings is that it is difficult to do more than one thing at a time. Just like people, classes, modules and functions are also not good at multitasking.
+The popular wisdom says that "He who chases two rabbits will catch neither", or "Don't spread yourself too thin". The meaning of such sayings is that it is difficult to do more than one thing at a time. Just like people, classes, modules and functions are also not good at multitasking.<!--more-->
 
 Considering this function:
 
