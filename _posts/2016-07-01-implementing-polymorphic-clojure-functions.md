@@ -104,3 +104,5 @@ After reordering files and namespaces, I came up with this solution:
                      (:opponent params)
                      (:depth params)))
 ```
+
+**This post has an [update](http://pwdd.github.io/posts/multimethods-in-multiple-namespaces)**
