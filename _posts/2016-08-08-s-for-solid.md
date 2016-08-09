@@ -21,7 +21,7 @@ Considering this function:
 
 It is doing more than one thing and violating the [Single Responsibility Principle (SRP)](https://en.wikipedia.org/wiki/Single_responsibility_principle) &mdash; the *S* in  [*SOLID*](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)).
 
-The SRP states that a function, a class or a module must have only one reason to change &mdash; which means it should have just one responsibility. Robert C. Martin, who elaborated the concept of SOLID design, [once explained](https://8thlight.com/blog/uncle-bob/2014/05/08/SingleReponsibilityPrinciple.html) the principle by comparing it to responsibilities of people in a company: the COO, CTO and CFO are all in the same hierarchic level and they respond to the CEO; and we don't want to get the COO fired because of a change requested by the CTO. Both COO and CTO should be only responsible for the things related to their area.
+The SRP states that a function, a class or a module must have only one reason to change &mdash; which means it should have just one responsibility. Robert C. Martin, who elaborated the concept of SOLID design, [once explained](https://8thlight.com/blog/uncle-bob/2014/05/08/SingleReponsibilityPrinciple.html) the SRP by comparing it to responsibilities of people in a company: the COO, CTO and CFO are all in the same hierarchic level and they respond to the CEO; and we don't want to get the COO fired because of a change requested by the CTO. Both COO and CTO should be only responsible for the things related to their area.
 
 ## How can a function do too much?
 
