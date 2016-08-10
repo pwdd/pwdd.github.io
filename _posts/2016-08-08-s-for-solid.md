@@ -81,3 +81,35 @@ Now `move` is a function that does only one thing: associates a `marker` to a `b
 **It is easier to test** the second `move` example. Assuming that the arguments are valid, we just need to make sure that it does what it says it does: put a `marker` on the `board`.  If we try to test the first example, we would have to cover a lot more: check if `move` has an invalid `position`, if it makes a move, and if it returns `false`.
 
 Another benefit is that having a function doing only one thing **reduces the risk of a change to have consequences in multiple places in the program**. It also makes things more **reasonable**: a small change does not turn into a bigger job than it should be.
+
+## What about classes?
+
+A function is so small that it seems easy to say that it should do only one thing. But what about classes? Don't they necessarily do more than one thing?
+
+We can use the same trick to find out if a class does too much by trying to explain its responsibility in one sentence, without using *and* and *or*. Considering the following class:
+
+```ruby
+class Board
+  def winning_positions
+    # ...
+  end
+
+  def is_full?
+    # ...
+  end
+
+  def available_spots
+    # ...
+  end
+
+  def display_board
+    # ...
+  end
+end
+```
+
+A good guess about what `Board` does is to say that is takes care of the board state *and* displays the board. It looks like this class does too much. `display_board` could easily belong in another class, maybe `View`.
+
+The way it is right now, `Board` will be affected if we add colors to print the board, or if we start using objects from another class to represent the markers (maybe `Cell` objects?), or if `display_board` needs to return a HTML page.
+
+Guessing what might happen is not productive, but by keeping `Board` responsible for just one thing we avoid future trouble. It might have many methods (that themselves follow the SRP), but, in the end, a class should have just one reason to change. 
