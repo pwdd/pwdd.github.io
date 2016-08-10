@@ -112,4 +112,4 @@ A good guess about what `Board` does is to say that is takes care of the board s
 
 The way it is right now, `Board` will be affected if we add colors to print the board, or if we start using objects from another class to represent the markers (maybe `Cell` objects?), or if `display_board` needs to return a HTML page.
 
-Guessing what might happen is not productive, but by keeping `Board` responsible for just one thing we avoid future trouble. It might have many methods (that themselves follow the SRP), but, in the end, a class should have just one reason to change. 
+Guessing what might happen is not productive, but by keeping `Board` responsible for just one thing we avoid future trouble. A class might have many methods (that themselves should follow the SRP), but, in the end, it should have just one reason to change. 
