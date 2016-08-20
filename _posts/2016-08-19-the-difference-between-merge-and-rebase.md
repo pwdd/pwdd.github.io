@@ -38,7 +38,7 @@ If we merge the branch `feature` into `master`, as there is no conflict, we can 
 
 ## `merge`
 
-A more common situation when merging is to have some conflict because one of the branches has moved ahead. It can happen that `master` has more commits than we we first branched `feature` from it. Then we would have:
+A more common situation, though, is to have some conflict. It happens when one of the branches has moved ahead. In this case, `master` has more commits than we we first branched `feature` from it:
 
 ```
 master has moved ahead before feature was merged
