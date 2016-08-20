@@ -71,6 +71,15 @@ Rebasing before merging is usually the best solution when dealing with the above
 From `feature`, we run `git rebase master`
 
 ```
+Before rebase
+
+                            ------
+                           /| C4 | FEATURE
+                     HEAD / ------
+------    ------    ------    ------
+| C1 |----| C2 |----| C3 |----| C5 | MASTER
+------    ------    ------    ------
+
 Rebase feature on top of master with 'git rebase master'
                                       -------
                                    /--| C4' | FEATURE
@@ -103,9 +112,57 @@ There are a few reasons we would like to keep things clean. One of them is that 
 
 The most important reason is that it makes it easier to collaborate. If we are working on a project, or want to collaborate in one, we can rebase before making a pull request, so that the maintainer of the code base does not need to be dealing with conflicts and can, instead, do a clean fast-forward merge.
 
+## When not to rebase
+
+**Don't rebase on public branches.**
+
+It is OK to do it if there is only one person working on that branch. But rebasing a public branch can make things messy:
+
+```
+Current state of the remote
+
+------    ------    --------
+| C1 |----| C2 |----| C2.1 | MASTER
+------    ------    --------
+            \   ------
+             \--| C3 |  FEATURE
+                ------
+```
+
+Then, **developer A** decides to do an [interactive rebase]({% post_url 2016-07-14-version-out-of-control %}) to clean up `master`, fixing up `C2.1` into `C2`:
+
+```
+------    -------
+| C1 |----| C2' | MASTER
+------    -------
+
+```
+
+Now, `C2`, from which `feature` as created, is gone, and the developer working on that feature wants to rebase on top of `master` before merging. When they run `git rebase master`, they will get an conflict message and will have to solve it.
+
+They fix the conflict and do a `git add .`. The error message is still there:
+
+```
+No changes - did you forget to use 'git add'?
+If there is nothing left to stage, chances are that something else
+already introduced the same changes; you might want to skip this patch.
+```
+
+Well, they did `add`. So they `git rebase --skip`. And they get another error message:
+
+```
+Using index info to reconstruct a base tree...
+Falling back to patching base and 3-way merge...
+Auto-merging <files>
+CONFLICT (content): Merge conflict in <file>
+error: Failed to merge in the changes.
+```
+
+Things will be pretty messy by the end, so rebasing `master` did more harm than good.
+
 ## See how history looks like:
 
-If we want to check it out how the history of our project looks like, we can access a ANSI graph provided by Git. It will be just like the ones in this page, put vertically displayed:
+If we want to check it out how the history of our project looks like, we can access a ASCII graph provided by Git. It will be just like the ones in this page, put vertically displayed:
 
 ```shell
 git log --oneline --decorate --graph
