@@ -27,7 +27,7 @@ currently checking out master
 If we merge the branch `feature` into `master`, as there is no conflict, we can do a fast-forward merge:
 
 ```
-HEAD simply moves forward, from C3 to C4
+'git merge feature': HEAD simply moves forward, from C3 to C4
 
 
                        >........HEAD
@@ -38,7 +38,7 @@ HEAD simply moves forward, from C3 to C4
 
 ## `merge`
 
-A more common situation when merging usually is not the simple. It can happen that `master` moves ahead before `feature` can merge. Then we have:
+A more common situation when merging is to have some conflict because one of the branches has moved ahead. It can happen that `master` has more commits than we we first branched `feature` from it. Then we would have:
 
 ```
 master has moved ahead before feature was merged
