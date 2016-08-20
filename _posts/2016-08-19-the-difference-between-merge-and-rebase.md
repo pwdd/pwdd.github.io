@@ -12,7 +12,7 @@ First things first:
 
 ## What is a **fast-forward** merge?
 
-We [know]({% post_url 20116-06-24-undoing-changes-with-git#checkout-revert-reset-and-stash %}) that `HEAD` is a pointer to the most recent commit of the branch we are in. If we are currently in `master`, and it has 3 commits, this is how it would look like:
+We [know]({% post_url 2016-06-24-undoing-changes-with-git %}) that `HEAD` is a pointer to the most recent commit of the branch we are in. If we are currently in `master`, and it has 3 commits, this is how it would look like:
 
 ```
 currently checking out master
