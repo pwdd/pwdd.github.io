@@ -105,4 +105,5 @@ After reordering files and namespaces, I came up with this solution:
                      (:depth params)))
 ```
 
-**This post has an [update](http://pwdd.github.io/post/multimethods-in-multiple-namespaces)**
+**This post has an [update]({% post_url 2016-08-09-multimethods-in-multiple-namespaces})**
+[Name of Link]({% post_url 2010-07-21-name-of-post %})
