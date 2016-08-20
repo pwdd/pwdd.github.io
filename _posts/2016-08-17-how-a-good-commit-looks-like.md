@@ -13,13 +13,13 @@ First, how a commit is made:
 ```
 A 'Initial commit' of a repo with one file, 'readme.md'
 
-|-------------------|          
-|    COMMIT 1a2s3   |         |----------------------|           |--------------|
-|      tree 1234e   |         | TREE 1234e           |           | BLOB 1w2e3   |
-|    author <name>  |=======>>| blob 1w2e3 readme.md |=========>>| file content |
-| committer <name>  |         |----------------------|           |--------------|
-| "Initial commit"  |
-|-------------------|
+|------------------|          
+|    COMMIT 1a2s3  |      |----------------------|      |--------------|
+|      tree 1234e  |      | TREE 1234e           |      | BLOB 1w2e3   |
+|    author <name> |====>>| blob 1w2e3 readme.md |====>>| file content |
+| committer <name> |      |----------------------|      |--------------|
+| "Initial commit" |
+|------------------|
 ```
 
 If we were tracking more files, each one would have a **blob**, and they would be listed in the **tree**. We can say that the tree and the blob make up the snapshot of our project at that point in time. When we make the second commit, this is what happens:
@@ -58,4 +58,4 @@ Let's say that we are working on a console game and we have to add colors to its
 
 Having a reversible commit is also useful when debugging: if everything worked alright in the previous commit, we can simply compare what has changed from that point on. Or go back to that point and discard the most recent changes. Reversible commits build us a safe net for when we need it.
 
-*<next post is about maintaining Git history clean>*
+<*next post is about maintaining Git history clean*>
