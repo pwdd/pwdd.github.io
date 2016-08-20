@@ -58,4 +58,4 @@ Let's say that we are working on a console game and we have to add colors to its
 
 Having a reversible commit is also useful when debugging: if everything worked alright in the previous commit, we can simply compare what has changed from that point on. Or go back to that point and discard the most recent changes. Reversible commits build us a safe net for when we need it.
 
-<*next post is about maintaining Git history clean*>
+[<*next post is about maintaining Git history clean*>]({% post_url 2016-08-19-the-difference-between-merge-and-rebase %})
