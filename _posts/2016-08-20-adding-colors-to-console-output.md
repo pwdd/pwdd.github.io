@@ -6,7 +6,7 @@ category: apprenticeship
 tags: [git]
 ---
 
-Just like the [minimax]({% post_url 2016-07-02-minimax-in-clojure %}), I thought that adding colors to the output of my Tic Tac Toe would be easy. However, as I had the output centralized based on the string length, it was not that easy. <!--more-->
+Just like the [minimax]({% post_url 2016-07-02-minimax-in-clojure %}), I thought that adding colors to the output of my Tic Tac Toe would be easy. And just like the minimax, it was a lot more difficult than I thought it would be. <!--more-->
 
 The first thing was to create a namespace to deal with the colors:
 
@@ -31,14 +31,14 @@ The first thing was to create a namespace to deal with the colors:
   (str (color ansi-colors) string (:default ansi-colors)))
 ```
 
-It is very simple and everything would work OK, if it was not the fact that the ANSI color code would add to the string length, but as the escape sequence was not be displayed, the output centralization got messy.
+It is very simple and everything would work OK, if it was not the fact that I had the output centralized based on the string length, and the ANSI color code would add to the string length. As the ANSI code was not be displayed, the centralization got messy.
 
 ## Counting a colorful string length
 
 After a long while, I came up with some functions that would find the color sequence and count the string length without them:
 
 ```clojure
-(def color-re #"\[\d?;?d*m")
+(def color-re #"\[\d?;?\d*m")
 
 (defn color-code-list
   [message-string]
@@ -58,7 +58,7 @@ After a long while, I came up with some functions that would find the color sequ
 
 ## Removing colors from a string
 
-The game worked fine, but all the tests that would expect strings in a certain way wouldn't pass. The tests were expecting things like `"Player 'x' moved to position 5"`, but it as getting `"Player '\[33mx\[37m' moved to position 5"`. The solution was to write a helper that would clean the strings specifically for the tests:
+The game worked fine, and the centralization was normal, but all the tests that would deal with strings wouldn't pass. The tests were expecting things like `"Player 'x' moved to position 5"`, but it as getting `"Player '\[33mx\[37m' moved to position 5"`. The solution was to write a helper that would clean the strings specifically for the tests:
 
 ```clojure
 (defn remove-color
