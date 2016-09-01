@@ -3,7 +3,7 @@ layout: post
 title:  "Adding colors to console output"
 date:   2016-08-20 15:16:06 -0500
 category: apprenticeship
-tags: [git]
+tags: [clojure]
 ---
 
 Just like the [minimax]({% post_url 2016-07-02-minimax-in-clojure %}), I thought that adding colors to the output of my Tic Tac Toe would be easy. And just like the minimax, it was a lot more difficult than I thought it would be. <!--more-->
