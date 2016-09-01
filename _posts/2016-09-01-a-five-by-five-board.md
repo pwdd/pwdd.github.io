@@ -40,7 +40,7 @@ In a 4x4 board, it would wait for 5 moves (counting both the computer and the op
 
 ## The final: mix medium and hard computer
 
-The solution above was acceptable: it was still an unbeatable computer. However, it does not mean that it was a very smart one. What I did to improve it was to use the function that gets the medium computer move.
+The solution above was acceptable: it was still an unbeatable computer. However, it does not mean that it was a very smart one. What I did to improve it was to use the function that gets the [medium computer move]({% post_url 2016-09-01-medium-difficulty-level-on-TTT %}).
 
 That means that the first moves would be based on a set of rules. When it reached a certain point in the game, it would handle back to the minimax. This way, I could also make the limit depth higher.
 
@@ -55,4 +55,4 @@ That means that the first moves would be based on a set of rules. When it reache
 
 Now, the computer is still unbeatable and a little bit smarter. The game runs without delay, which was the original goal.
 
-I've never played in a 4x4 or 5x5 board before, so I'm not sure about forks. That's why I'll probably keep looking into implementing the pruning and trying other solutions. 
+I've never played in a 4x4 or 5x5 board before, so I'm not sure about forks. That's why I'll probably keep looking into implementing the pruning and trying other solutions.
