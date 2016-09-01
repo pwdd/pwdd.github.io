@@ -22,7 +22,7 @@ The first thing to do was to have a limit depth, so that the search would stop a
 
 It worked, but it was still very slow for limit depths higher than 4.
 
-I must say that I tried to implement the [Alpha Beta Pruning](), but I could not find a nice way to do it with Clojure. I would probably have to re-write the minimax function so that I would be able to pass alpha and beta around. It is still in my personal list of todos.
+I must say that I tried to implement the [Alpha Beta Pruning](https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning), but I could not find a nice way to do it with Clojure. I would probably have to re-write the minimax function so that I would be able to pass alpha and beta around. It is still in my personal list of todos.
 
 ## The second try: randomize initial moves
 
