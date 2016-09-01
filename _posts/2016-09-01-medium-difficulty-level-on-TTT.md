@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Adding a medium difficulty to TT"
+title:  "Adding a medium difficulty level to TTT"
 date:   2016-09-01 11:47:41 -0500
 category: apprenticeship
 tags: [clojure]
