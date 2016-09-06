@@ -20,7 +20,7 @@ I created a namespace to hold the functions related to the rules that the medium
   (mapv #(nth board %) indexes-combo))
 ```
 
-From there, it was just a matter of writing which one of the rules. As I had used a multimethod to get the move of a player based on its role, there was not a lot of chances to be done. This is how the medium player `select-spot` looks like:
+From there, it was just a matter of writing each one of the rules. As I had used a multimethod to get the move of a player based on its role, there was not many changes to be done. This is how the medium player `select-spot` looks like:
 
 ```clojure
 (defn play-based-on-rules
