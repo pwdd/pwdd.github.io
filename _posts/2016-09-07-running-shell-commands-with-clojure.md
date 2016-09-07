@@ -46,7 +46,7 @@ Here is the final function that clears the screen and quits the game:
     (System/exit 0))
 ```  
 
-The other situation in which I need to run a shell command was to get the console width. In this case, it took me a lot of research to find this solution (I didn't come up with it).
+The other situation in which I needed to run a shell command was to get the console width. In this case, it took me a lot of research to find this solution (I didn't come up with it).
 
 ```clojure
 (defn get-console-width
