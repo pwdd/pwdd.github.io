@@ -31,7 +31,7 @@ The above command says to use shell (`"/bin/sh"`), pass a `"clear"` command to i
 ", :err ""}
 ```
 
-We then get the `:out` from that, we get some extra new lines, and calling `print` on it, with an empty space, avoids this to happen.
+We then get the `:out` from that. It will give us some extra new lines, and calling `print` on it, with an empty space, avoids this to happen.
 
 This of course will not work in Windows command line. This is the final function that clears the screen and quits the game:
 
