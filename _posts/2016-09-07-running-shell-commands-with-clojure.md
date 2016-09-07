@@ -22,7 +22,7 @@ The first thing to do is to require `clojure.java.shell`, that starts a sub-proc
 ;(print "" (:out (shell/sh "/bin/sh" "-c" "clear <  /dev/null")))
 ```
 
-The above command says to use shell (`"/bin/sh"`), pass a `"clear"` command to it (the `-c` flash says that the command are read from a string) and pipe any possible output to a `/dev/null` in order to silent it. This will run the `clear` command and will print out a map:
+The above command says to use shell (`"/bin/sh"`), pass a `"clear"` command to it (the `-c` flash says that the command are read from a string) and pipe any possible output to a `/dev/null` in order to silent it. This will run the `clear` command and will return a map:
 
 ```clojure
 ; `:exit` is the exit code; `:out` is the `stdout` and `:err` is the `stderr`
