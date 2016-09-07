@@ -33,7 +33,9 @@ The above command says to use shell (`"/bin/sh"`), pass a `"clear"` command to i
 
 We then get the `:out` from that. It will give us some extra new lines, and calling `print` on it, with an empty space, avoids this to happen.
 
-This of course will not work in Windows command line. This is the final function that clears the screen and quits the game:
+This of course will not work in Windows command line.
+
+Here is the final function that clears the screen and quits the game:
 
 ```clojure
 (defn clear-and-quit
@@ -44,7 +46,7 @@ This of course will not work in Windows command line. This is the final function
     (System/exit 0))
 ```  
 
-The other situation was getting the console width. In this case, it took me a lot of research to find this solution (I didn't come up with it).
+The other situation in which I need to run a shell command was to get the console width. In this case, it took me a lot of research to find this solution (I didn't come up with it).
 
 ```clojure
 (defn get-console-width
