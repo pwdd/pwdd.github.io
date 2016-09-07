@@ -55,7 +55,7 @@ The other situation in which I needed to run a shell command was to get the cons
         :out (re-find #"(\d+) columns") second))
 ```
 
-Running `stty -a` returns a lot of information, including the line `25 rows; 80 columns;`. All this information will be on the `:out` field of the `sh` returned map. From there, we find the number of columns (`["80 columns" "80"]`) and get the second element from that array: `"80"`.
+Running `stty -a` returns a lot of information, including the line `25 rows; 80 columns;` (the numbers will be different depending on the terminal settings). All this information will be on the `:out` field of the `sh` returned map. From there, we find the number of columns using regex (it will return `["80 columns" "80"]`) and get the second element from that array: `"80"`.
 
 Once again, it won't work on Windows. The final function that gets the half size of a console is this:
 
