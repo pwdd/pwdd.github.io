@@ -6,22 +6,21 @@ category: apprenticeship
 tags: [scala]
 ---
 
-Clojure has a special way to guarantee the tail recursion optimization, with the macro `recur`. In Scala, we can call the function by its name and use a special notation to make sure that the optimization will happen <!--more-->
+Clojure has a special way to guarantee the tail recursion optimization, with the macro `recur`. In Scala, we can call the function by its name, but there is also a special notation to make sure that the optimization will happen. <!--more-->
 
 ## What is tail recursion?
 
-First, it is important to understand what a tail recursion is. It is easier to understand if we see it:
+First, it is important to understand what a tail recursion is. It might be easier if we see it:
 
 ```scala
 // traditional recursion
-
 def sumAll(limit: Int): Int = {
   if (limit == 1) 1
   else limit + sumAll(limit - 1)
 }
 ```
 
-The above implementation of `sumAll`, that sums all numbers from 1 to the `limit`, is a traditional recursion, not a tail recursion, because it performs a sum (`limit + sumAll(limit - 1`), instead of calling the function directly. This is how it would be evaluated:
+The above implementation of `sumAll`, that sums all numbers from 1 to the `limit`, is a traditional recursion, not a tail recursion, because it performs a sum (`limit + sumAll(limit - 1`), instead of calling the function directly.
 
 A tail recursive definition would be like this:
 
@@ -38,13 +37,14 @@ def sumAll(number: Int): Int = {
 
 This time, the private function `sum` call itself and is tail recursive.
 
-Tail recursion is a subroutine that calls a function as the final action of a procedure. When the subroutine makes the call to the function more than once, those calls can be optimized use only one [stack](https://8thlight.com/blog/doug-bradbury/2015/04/27/stack-overflow.html), instead of creating new ones and possibly causing a Stack Overflow.
+Tail recursion is a subroutine that calls a function as the final action of a procedure. When the subroutine makes the call more than once, those calls can be optimized to use only one [stack](https://8thlight.com/blog/doug-bradbury/2015/04/27/stack-overflow.html), instead of creating new ones and taking the risk of causing a Stack Overflow.
 
 It does not mean that everytime we write a function/method that calls itself in the end, it will be optimized. Functional languages, like Clojure and Scala, guarantee the optimization, though.
 
 In Clojure, the way to guarantee it is to use the macro `recur`, instead of the name of the function:
 
 ```clojure
+; tail recursive
 (defn factorial
   [number]
   (loop [base number
@@ -60,6 +60,7 @@ In Clojure, the way to guarantee it is to use the macro `recur`, instead of the 
 In Scala, it would be:
 
 ```scala
+//tail recursive
 def factorial(number: Int): Int = {
   def fac(base: Int, acc: Int): Int = {
     if (base == 1) acc
@@ -71,6 +72,8 @@ def factorial(number: Int): Int = {
 factorial(5)
 //-> 120
 ```
+
+## Check for tail recursion
 
 The optimization will happen automatically, but if we need to make sure that a method is tail-recurse, we can put `@tailrec` before the method definition:
 
@@ -96,14 +99,14 @@ import scala.annotation.tailrec
 
 @tailrec
 def factorial(number:Int) : Int = {
-    if (number == 1) 1
-    else number * factorial (number - 1)
+  if (number == 1) 1
+  else number * factorial (number - 1)
 }
 
 factorial(5)
 // <console>: error: could not optimize @tailrec annotated method factorial: it contains a recursive call not in tail position
-//           else number * factorial (number - 1)
-//                       ^
+//            else number * factorial (number - 1)
+//                        ^
 ```
 
-The error shows that the `factorial` function does not have a recursive call at the end: it does not only call a function, but it also makes a multiplication with the result of the call to that function. If we had not used the `@tailrec` annotation, we would get a `StackOverflow` error when trying to use the function on big numbers.
+The error shows that the `factorial` function does not have a tail recursive call at the end. If we had not used the `@tailrec` annotation, we would get a `StackOverflow` error when trying to use the function on big numbers.
