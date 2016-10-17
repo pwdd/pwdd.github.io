@@ -142,11 +142,19 @@ Another way to do it would be using a `case class` that automatically defines th
 ```scala
 case class Person(firstName: String, lastName: String, var age: Int)
 
-val aPerson = new Person("John", "Smith", 20)
+val aPerson = Person("John", "Smith", 20)
 
 aPerson.firstName //-> John
 aPerson.age //-> 20
 ```
+
+**Case classes** are just like regular classes, but they:
+
+1. Automatically define *getters*
+
+2. Do not require the constructor `new` when creating an object (`val aPerson = Person("John", "Smith", 20)`)
+
+3. Are useful when using pattern matching to decompose data structure. And this is a much bigger topic that will probably become a post itself. 
 
 ## Defining a function
 
