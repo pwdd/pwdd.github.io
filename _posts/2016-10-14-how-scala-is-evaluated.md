@@ -10,7 +10,7 @@ The same way that expressions can be written in different ways, code written in 
 
 ## Call by value
 
-By default, Scala evaluation is **call by value**, that follows the substitution model, similar to the evaluation of lambda calculus in mathematics.
+By default, Scala evaluation is **call by value**, that follows the substitution model, similar to the evaluation of lambda calculus in mathematics. It reduces an expression to a value.
 
 ```scala
 val x = 1
@@ -23,7 +23,7 @@ val y = 2
 //-> 4
 ```
 
-Functions are evaluated the same way: it evaluates the parameters, then it replaces the function by it's body definition and, at the same time, replace the named parameters by its values.
+Functions are evaluated the same way. First, the parameters are evaluated; then the function name is replaced by it's body and, at the same time, the named parameters are replaced by its values.
 
 ```scala
 def square(x: Int): Int = x * x
@@ -40,7 +40,7 @@ def sumOfSquares(x: Int, y: Int): Int = square(x) + square(y)
 //-> 25
 ```
 
-The substitution model of evaluation can only be applied to functions that do not have side effects. For example, when we increment the value of a variable, because it is difficult to keep track of that given value. This would be one reason to avoid mutable variables.
+The substitution model of evaluation can only be applied to functions that do not have side effects. When we increment the value of a variable, for example, it would be considered side effect, and it would be difficult to keep track of that given value. This would be one reason to avoid mutable variables.
 
 # Call by name
 
@@ -60,15 +60,17 @@ The substitution model also cannot be used to evaluate expressions that cannot b
 The **call by value** evaluates an expression only once, while **call by name** will not evaluate an argument if it is not used by the function body. There are situations in which one has more advantages than other. For instance:
 
 ```scala
+def infiniteLoop(a: Int): Int = infiniteLoop
+
 def id(x: Int, y: Int) = x
 
 // call by name
-id(1, loop)
+id(1, infiniteLoop)
 // `loop` does not matter for the final result, so it is not evaluated
 //-> 1
 
 // call by value
-id(1, loop)
+id(1, infiniteLoop)
 // will never terminate because it is an infinite loop
 ```
 
@@ -81,7 +83,7 @@ There is, however, a way to change it, by adding a `=>` in front of the return t
 ```scala
 def id(x: Int, y: => Int) = x
 
-id(1, loop)
+id(1, infiniteLoop)
 //-> 1
 ```  
 
@@ -98,10 +100,10 @@ The difference from that expression to `def sum(a: Int, b: Int): Int = a + b` is
 `val` uses **CBV**, which means that the evaluation happens in the moment of the definition. While `def` uses **CBN**, and it's evaluation will only happen during the function call.
 
 ```scala
-def loop(): Boolean = loop
+def infiniteLoop(): Boolean = infiniteLoop
 
-def x = loop
+def x = infiniteLoop
 // x: Boolean
 
-val x = loop // this will cause an infinite loop
+val x = infiniteLoop // this will cause an infinite loop
 ```

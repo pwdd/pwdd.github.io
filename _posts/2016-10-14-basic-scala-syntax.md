@@ -6,11 +6,11 @@ category: apprenticeship
 tags: [scala]
 ---
 
-The fact that Scala can be written as an Object Oriented or a Functional language gives us at least two different ways to accomplish the same thing. But it is not only that: common tasks, like defining a function/method, also can be written in different ways. <!--more-->
+The fact that Scala can be written as an Object Oriented or a Functional language gives us at least two different ways to accomplish the same thing. But it is not only that: common tasks, like defining a function/method, also can be done in different ways. <!--more-->
 
 ## Defining a variable
 
-There are two ways of doing it, depending on the mutability to the variable.
+Scala differentiates mutable from immutable variables.
 
 ```scala
 // value is immutable
@@ -20,7 +20,7 @@ val x = 1
 var y = 1
 ```
 
-This means that when we define a value inside an object, we will only get a *getter* for that value, while if we define a variable, we will get also a *setter*.
+This means that when we define a `val` inside an object, we will only have a *getter* for that value, while if we define a `var`, we will get also a *setter*.
 
 ```scala
 object Foo {
@@ -37,7 +37,7 @@ Foo.y = 2
 Foo.y //-> Int = 2
 ```
 
-The mutability is relative to value/variable definition. This means that `x` will not have other value associated with it other than 1, while `y` can have another value associated with it. So a variable could be associated with an immutable data type:
+The mutability is relative to the definition of a value/variable. This means that `x` will not have other value associated with it other than 1, while `y` can have another value associated with it. This means that a variable (mutable) could be associated with an immutable data type:
 
 ```scala
 object Bar {
@@ -50,6 +50,8 @@ Bar.a //-> List[Int] = List(2, 4, 6)
 ```
 
 In this case, `a` is mutable, but `List` is not.
+
+One last thing: a `val` is not a constant, that is written with capital letter.
 
 ## Type inference
 
@@ -116,20 +118,31 @@ class Person(first: String, last: String, yearsOld: Int) {
   var age = yearsOld
 }
 
-var aPerson = new Person("John", "Smith", 20)
+val aPerson = new Person("John", "Smith", 20)
 
 aPerson.firstName //-> John
 aPerson.age //-> 20
 ```
 
-Note that the name of the parameters must be different from the name of the instance variables. This is because the parameters are themselves immutable values.
+Note that the name of the parameters must be different from the name of the instance variables. This is because the parameters are themselves immutable values, but not as fields of an object.
 
 The example above could be shorter if written like this:
 
 ```scala
 class Person(val firstName: String, val lastName: String, var age: Int)
 
-var aPerson = new Person("John", "Smith", 20)
+val aPerson = new Person("John", "Smith", 20)
+
+aPerson.firstName //-> John
+aPerson.age //-> 20
+```
+
+Another way to do it would be using a `case class` that automatically defines the *getters*. In this example, we would have to explicitly use `var` for `age` field. Otherwise, it would be a `val`.
+
+```scala
+case class Person(firstName: String, lastName: String, var age: Int)
+
+val aPerson = new Person("John", "Smith", 20)
 
 aPerson.firstName //-> John
 aPerson.age //-> 20
@@ -155,6 +168,6 @@ def printNumber(number: Int): Unit = {
 }
 ```
 
-As we can see, although Scala is statically typed, there is no need to turn `number` into a string. The string interpolation for this simple expression will automatically change `Int` into `String`.
+As we can see, although Scala is statically typed, there is no need to turn `number` into a string in order to pass it to `println`. The string interpolation for this simple expression will automatically change `Int` into `String`.
 
 The return type of the above function is `Unit`, which means that the function returns no value (`println` returns no value). Note that the function does return, so `Unit` is the right type. When I function does not return, the type would be `Nothing`.
