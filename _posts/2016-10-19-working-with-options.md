@@ -8,7 +8,7 @@ tags: [scala]
 
 While developing the Tic Tac Toe in Scala, I came across a problem related to getting the winner of the game. If the game ended with a win, it would return the player who won. But if the game ended in a tie, it would throw an exception. And catching exceptions is not exactly a good way to solve that problem. Having a `Option` is. <!--more-->
 
-An [`Option`](http://www.scala-lang.org/api/2.11.8/index.html#scala.Option) type can be used when a function returns *something* or *nothing*. This might be something trivial in languages like Clojure, in which functions can return a value or `nil`, but because Scala is statically typed, *something* does not have the same type as *nothing*, and we can easily see ourselves dealing with a mess of `Any` values.<!--more-->
+An [Option](http://www.scala-lang.org/api/2.11.8/index.html#scala.Option) type can be used when a function returns *something* or *nothing*. This might be something trivial in languages like Clojure, in which functions can return a value or `nil`, but because Scala is statically typed, *something* does not have the same type as *nothing*, and we can easily see ourselves dealing with a mess of `Any` values.<!--more-->
 
 A Clojure example of a function that returns *something* or `nil`:
 
@@ -62,7 +62,7 @@ add(divide(4, 2), 2)
 
 ## Meet `Option`
 
-The example above is the perfect situation in which `Option` would be up for good use. An *optional*, that sometimes is referred to as "maybe type" because of its implementation in Haskell ([`Maybe` type](https://hackage.haskell.org/package/base-4.9.0.0/docs/Data-Maybe.html)), encapsulates the result of an expression that can return *something* or *nothing*.
+The example above is the perfect situation in which `Option` would be up for good use. An *optional*, that sometimes is referred to as "maybe type" because of its implementation in Haskell ([`Maybe` type](https://hackage.haskell.org/package/base-4.9.0.0/docs/Data-Maybe.html)), **encapsulates** the result of an expression that can return *something* or *nothing*.
 
 If `divide` results in an `Int` or nothing, we can say it returns `Option[Int]`.
 
@@ -127,7 +127,9 @@ List().headOption
 // Option[Nothing] = None
 ```
 
-* `map` being sent to an `Option` shows that we can treat `Option` like a collection. Another examples:
+* `map` being sent to an `Option` shows that we can treat `Option` like a collection. In the `getElement` example, for each element is `index` (an `Option`), get the given element from `ls` (a `List[String]`).
+
+Another examples when `Option` responds to functions from the collection API:
 
 ```scala
 val lA = List(1, 2, 3).headOption
