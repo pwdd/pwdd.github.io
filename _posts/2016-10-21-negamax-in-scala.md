@@ -6,7 +6,7 @@ category: apprenticeship
 tags: [scala]
 ---
 
-One of the things that I was not able to do when I wrote the the negamax in Clojure was to implement the alpha beta pruning. Things have changed now, with Scala &mdash;  and the improvement of the performance when playing in a 4x4 board is considerable.<!--more-->
+The [Scala evaluation method]({% post_url 2016-10-14-how-scala-is-evaluated %}) makes it more efficient to deal with immutable values, but it still give us the chance to easily deal with mutable data. It is possible to write a program following the Function Programming paradigm while still being able to rely on mutable object fields. Thanks to that, it is reasonably easy to implement the negamax with alpha beta pruning algorithm, improving the performance of an unbeatable computer in a Tic Tac Toe game. <!--more-->
 
 ## Negamax with alpha beta pruning
 
