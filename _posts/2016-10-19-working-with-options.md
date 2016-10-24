@@ -6,7 +6,7 @@ category: apprenticeship
 tags: [scala]
 ---
 
-In dynamically typed languages, it is a trivial task to write functions that return *something* or *nothing*. In a statically typed language like Scala, *something* does not have the same type as *nothing*. It is possible to check if something exists and handle the exception, but this is not exactly a good way to solve that kind of problem. Having a `Option` is. <!--more-->
+In dynamically typed languages, it is a trivial task to write functions that return *something* or *nothing*. In a statically typed language like Scala, *something* does not have the same type as *nothing*. It is possible to check if something exists and handle the exception, but this is not exactly a good way to solve that kind of problem. Having an `Option` is. <!--more-->
 
 An [Option](http://www.scala-lang.org/api/2.11.8/index.html#scala.Option) type can be used when a function returns *something* or *nothing*. This might be something trivial in languages like Clojure, in which functions can return a value or `nil`, but because Scala is statically typed, *something* does not have the same type as *nothing*, and we can easily see ourselves dealing with a mess of `Any` values.<!--more-->
 
