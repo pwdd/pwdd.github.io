@@ -6,7 +6,7 @@ category: apprenticeship
 tags: [scala]
 ---
 
-The [Scala evaluation method]({% post_url 2016-10-14-how-scala-is-evaluated %}) makes it more efficient to deal with immutable values, but it still give us the chance to easily deal with mutable data. It is possible to write a program following the Function Programming paradigm while still being able to rely on mutable object fields. Thanks to that, it is reasonably easy to implement the negamax with alpha beta pruning algorithm, improving the performance of an unbeatable computer in a Tic Tac Toe game. <!--more-->
+The [Scala evaluation method]({% post_url 2016-10-14-how-scala-is-evaluated %}) makes it more efficient to use immutable values, but it still give us the chance to easily deal with mutable data. It is possible to write a program following the Functional Programming paradigm while being able to rely on mutable variables. Thanks to that, it is reasonably easy to implement the negamax with alpha beta pruning algorithm, improving the performance of an unbeatable computer in a Tic Tac Toe game. <!--more-->
 
 ## Negamax with alpha beta pruning
 
@@ -38,7 +38,7 @@ The search would find that position 3 has the value 100 (the value returned by t
 
 In Clojure, because it is a purely functional language, trying to emulate the behavior of imperative programming and break out of loop if a condition is met and dealing with a mutable value (updating alpha) is complicated. At least, it was for me, when I tried. I [ended up](https://github.com/pwdd/ttt-clojure/blob/master/src/ttt/computer/negamax.clj#L27) using `map` to generate the boards and run the analysis.
 
-In Scala, because it can be used as a Object Oriented language, dealing with a mutable variable was easier. My solution was to have a `var` associated with the object and update it during the loop.
+In Scala, because it can be used as a Object Oriented language, dealing with a mutable variable was easier. My solution was to have a `var` associated with the class and update it during the loop.
 
 Two things to consider while writing the algorithm:
 
@@ -53,7 +53,7 @@ Here is a edited version of the solution. Both players start with the worst poss
 ```scala
 import scala.util.control.Breaks._
 
-object Negamax {
+class Negamax {
   var bestMove = -1
 
   def score(board: List[Symbol],
