@@ -16,7 +16,7 @@ When we create an object using `object Foo { //... }`, we create a singleton &md
 
 If we explicitly define a `class Foo { //... }` and then an object with the same name in the same source file, that object will be a *companion object* (a class and its companion object share each other private variables and methods).
 
-In his book [Programming Scala](http://www.artima.com/shop/programming_in_scala_3ed), prof. Martin Odersky says that <sup>[1](#footnote1)</sup>:
+In his book [Programming in Scala](http://www.artima.com/shop/programming_in_scala_3ed), Prof. Martin Odersky says that <sup>[1](#footnote1)</sup>:
 
 > If you are a Java programmer, one way to think of singleton objects is as the home for any static methods you might have written in Java.
 
