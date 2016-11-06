@@ -26,7 +26,7 @@ Layer 1 talks to Layer 2; Layer 2 talks to 1 and 3, and Layer 3 talks to 2.
 
 Each layer follows certain **protocols** that allow them the communicate and exchange the data between each other.
 
-In a nutshell, this is how it goes:
+The TCP/IP has 4 layers and, in a nutshell, this is how it goes:
 
 1. **The application layer**: The client
 
