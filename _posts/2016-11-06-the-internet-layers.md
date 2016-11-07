@@ -32,7 +32,7 @@ The TCP/IP has 4 layers and this is how it goes:
 
     The **application** layer on both sides &mdash; client and server &mdash; is responsible to follow the [HTTP protocol](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol), that establishes a set of rules that client and server use in order to be able to communicate with each other. The HTTP protocol is not the only one that must be handled at the application layer. There are [SMTP](https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol), [FTP](https://en.wikipedia.org/wiki/File_Transfer_Protocol) and others.
 
-    Assuming that the client makes a [GET request](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.3) following the HTTP Protocol, the data that is going to be passed to the next layer will hold all the information necessary to establish the communication to the server. It will have a header containing the method (GET), the request [URI](https://tools.ietf.org/html/rfc3986), which version of the HTTP Protocol it uses (let's say HTTP/1.1) etc.
+    Assuming that the client makes a [GET request](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.3) following the HTTP Protocol, the data that is going to be passed to the next layer will hold all the information necessary to establish the communication with the server. It will have a header containing the method (GET), the request [URI](https://tools.ietf.org/html/rfc3986), which version of the HTTP Protocol it uses etc.
 
     The application layer writes the data to the stream and passes it to the **transport** layer.
 
