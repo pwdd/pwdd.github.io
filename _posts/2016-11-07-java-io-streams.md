@@ -36,14 +36,18 @@ I have been working on writing a HTTP server in Java, using the `ServerSocket` a
 // 'socket' is the socket used to talk to the client
 // 'in' gets the InputStream that comes from that socket,
 // filters it into a InputStreamReader (read the characters)
-// that is then filtered into a BufferedReader, that works just like a 'BufferedInputStream'
+// that is then filtered into a 'BufferedReader',
+// that works just like a 'BufferedInputStream'
 // but it holds characters instead of bytes
-BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+BufferedReader in = new BufferedReader(
+                      new InputStreamReader(socket.getInputStream()));
 
-// 'PrintWriter' implements methods like 'print' and 'println'
-// that is used to print to the OutputStream (header and payload)
+// 'PrintWriter' implements the methods 'print' and 'println'
+// It is used to print the HTTP header and the payload to the OutputStream
 // BufferedWriter does not implement those methods
-PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())));
+PrintWriter out = new PrintWriter(
+                    new BufferedWriter(
+                      new OutputStreamWriter(socket.getOutputStream())));
 ```
 
-After having those `in` and `out` in place, it is just a matter of organizing how the data passed back and forth between client and server is used. 
+After having those `in` and `out` in place, it is just a matter of organizing how the data passed back and forth between client and server is used.
