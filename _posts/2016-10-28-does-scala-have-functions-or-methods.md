@@ -30,7 +30,7 @@ On his book [Programming in Scala](http://www.artima.com/shop/programming_in_sca
 
 > Function definitions start with `def`
 
-One of the code snippets used in the book is this:
+This means that our first *method* (`def aMethod(x: Int) = x + 1`) is actually a function. In another part of the book, one of the code snippets used in is this one:
 
 ```scala
 val nameHasUpperCase = name.exists(_.isUpper)
@@ -41,6 +41,8 @@ Followed by the explanation:
 > The predicate `_.isUpper` is an example of a **function literal** in Scala.
 It describes a function that takes a character argument (represented by the
 underscore character), and tests whether it is an upper case letter.
+
+[`isUpper`](http://www.scala-lang.org/api/current/scala/runtime/RichChar.html#isUpper:Boolean) is a method inside `RichChar` class.
 
 In another book, [Programming Scala](http://shop.oreilly.com/product/0636920033073.do) (yes, the names are almost the same), the authors Dean Wampler and Alex Payne explain that, when declared inside an object, a *method* is **lifted** to a function if it does not modify characteristics of the object.
 

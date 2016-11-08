@@ -3,7 +3,7 @@ layout: post
 title:  "The Internet Layers"
 date:   2016-11-06 09:55:32 -0500
 category: apprenticeship
-tags: [scala]
+tags: []
 ---
 
 If you ever tried to understand how your computer connects to *the internet*, you probably learned that a **client** &mdash; usually, but not always, a browser &mdash; sends a request to a **server**,  located at the address you typed in in the browser's address bar; then the server sends back a response to the client. That's is pretty accurate. But there is much more to that.<!--more-->
