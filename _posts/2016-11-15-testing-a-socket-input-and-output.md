@@ -40,13 +40,13 @@ As most of the work is about manipulating strings, the tests are simple to put t
 
 Probably one of the things that helped me the most was an advice from one of my mentors, who said that "*If a class is difficult to test, we know that our tests are trying to tell us that it is time to refactor*". From there, I worked on separating everything so that I could test things as isolated as possible &mdash; a method to get the input, one to send the output, one to bind a server socket to a port, one to create the socket for input and output and so on.
 
-*(From now on, I will refer to the socket that gets bind to a port and `serverSocket`, the socket that input and output pass through as `socket` and, the client socket as `clientSocket`)*
+*(From now on, I will refer to the socket that gets bind to a port and `serverSocket`, the socket that input and output pass through as `socket`)*
 
 ### The first test:
 
 - **A connection only happens if a `serverSocket` is listening at a port**.
 
-In this case, we only need to make sure that the `serverSocket` is listening for connections, and nothing else. We test is by creating a `clientSocket` and trying to connect. There is no need to worry about requests and responses.
+In this case, we only need to make sure that the `serverSocket` is listening for connections, and nothing else. We test it by creating a `clientSocket` and trying to connect. There is no need to worry about requests and responses.
 
 ```java
 @Test
@@ -83,16 +83,16 @@ In this case, we only need to make sure that the `serverSocket` is listening for
 
 - **make sure the server can receive a request**
 
-For this test, we need to mock a socket. The idea is that the `serverSocket` will get an input from a `mockSocket` and send an output through the `mockSocket`. After all, we are testing the `serverSocket`, we can use a mock instead of a `socket`. But how do we go about mocking a socket?
+For this test, we need to mock a socket. The idea is that the `serverSocket` will get an input from a `mockSocket`. After all, what matters is if the `serverSocket` is getting the input, not if a socket is sending a request. That's why we can use a mock instead of a `socket`. But how do we go about mocking a socket?
 
 Everything we need from a socket are the methods `getInputStream` and `getOutputStream`. For this second test, we actually need only `getInputStream`.
 
 ```java
 public class MockSocket extends Socket {
-  // a mockSocket constructor does not need hostname and port number,
+  // a mockSocket constructor does not need hostname and port number
   public MockSocket() {}
 
-  // return a InputStream with a dummy request
+  // return an InputStream with a dummy request
   public InputStream getInputStream() {
     return new ByteArrayInputStream("GET / HTTP/1.1\nHost: localhost".getBytes());
   }
@@ -173,7 +173,7 @@ public class MockSocket extends Socket {
     };
   }
 
-  // this method does not exist in the super class 'Socket'
+  // this method does not exist in the extended class 'Socket'
   // it is used to return the string formed by the bytes added to 'bytesList'
   public String output() {
     byte[] converted = toByteArray(bytesList);
