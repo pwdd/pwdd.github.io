@@ -83,7 +83,7 @@ In this case, we only need to make sure that the `serverSocket` is listening for
 
 - **make sure the server can receive a request**
 
-For this test, we need to mock a socket. The idea is that the `serverSocket` will get an input from a `mockSocket`. After all, what matters is if the `serverSocket` is getting the input, not if a socket is sending a request. That's why we can use a mock instead of a `socket`. But how do we go about mocking a socket?
+For this test, we need to mock a socket. The idea is that the server will get an input from a `mockSocket`. After all, what matters is if the server is getting the input, not if a socket is sending a request. That's why we can use a mock instead of a `socket`. But how do we go about mocking a socket?
 
 Everything we need from a socket are the methods `getInputStream` and `getOutputStream`. For this second test, we actually need only `getInputStream`.
 
@@ -147,7 +147,7 @@ void sendResponse(Socket socket, String responseBody) throws IOException {
 }
 ```
 
-The `PrintWriter` is just used to write the response. How to check that the server is actually sending some data to some client? Would it be necessary to create yet another mock, representing the client socket, to check if it receives the right response? This option would only add complexity to the test, and it would be hard to guarantee that `serverSocket` works by sending something, because we could be testing if a client socket *receives* something.
+The `PrintWriter` is just used to write the response. How to check that the server is actually sending some data to some client? Would it be necessary to create yet another mock, representing the client socket, to check if it receives the right response? This option would only add complexity to the test, and it would be hard to guarantee that server works by sending something, because we could be testing if a client socket *receives* something.
 
 The solution is again on the `mockSocket`. When we call `print` on `out`, we are calling the method `write` from the OutputStream. The method `sendResponse` does not depend on a client Socket to exist, so it can be tested without it. Here is how the final `MockSocket` class could be:
 
