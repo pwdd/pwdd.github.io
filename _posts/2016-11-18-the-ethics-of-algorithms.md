@@ -16,7 +16,7 @@ An algorithm, of course, is not biased. It is just a bunch of code that works fl
 
 ## Why does it matter?
 
-All of this discussion might seem very far from our day to day work. We just want to drink our coffee and write code. But how would we feel if our work is used for something that hurt other people? Who are those programmers using their skills to build software for companies that promote scam? Are we OK if we are asked to build software that decides if some people are going to be able to rent a house, or find a job? Would it be better if we knew that the software would be used by a company that needs to filter out thousands of candidates? Would that make a difference?
+All of this discussion might seem very far from our day to day work. We just want to drink our coffee and write code. But how would we feel if our work is used for something that hurt other people? Who are those programmers using their skills to build software for companies that promote scam? Are we OK if we are asked to build software that decides if some people are going to be able to rent a house, or find a job? Would it be better if we knew that the software would be used by a company that needs to filter out thousands of candidates? Would that make a difference in our opinion?
 
 Of course, whoever [invented the airplane](http://www.cnn.com/2013/06/07/travel/wright-brothers-first-flight-fight/) did not think about it being used in wars. The creator of a painkiller probably did not have as their first goal to cause addiction. Some philosophers didn't foresee the use of their ideas by dictatorial regimes. But at least acknowledging the consequences of what we do might be step towards more meaningful conversations.
 
