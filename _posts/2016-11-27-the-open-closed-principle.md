@@ -92,7 +92,7 @@ Now, `Responder` depends on something abstract and less likely to change (the `I
 
 ## When to use OCP
 
-A violation of OCP is usually easy to identify: if a class depend on another concrete class, there it is the violation. But it is not always easy to create abstractions to solve the problem. In [*Agile Software Development &mdash; Principles, Patterns, and Practices*](https://www.pearsonhighered.com/program/Martin-Agile-Software-Development-Principles-Patterns-and-Practices/PGM272869.html), Robert C. Martin points out that
+A violation of OCP is usually easy to identify: if a class depend on another concrete class, there it is the violation. Conditional statements depending on the *type* of something are also a sign that the OCP is not being followed. But it is not always easy to create abstractions to solve the problem. In [*Agile Software Development &mdash; Principles, Patterns, and Practices*](https://www.pearsonhighered.com/program/Martin-Agile-Software-Development-Principles-Patterns-and-Practices/PGM272869.html), Robert C. Martin points out that
 
 > (...) conforming to OCP is expensive. It takes development time and effort to create the appropriate abstractions. Those abstractions also increase the complexity of the software design. (...) Clearly, we want to limit the application of the OCP to changes that are likely.
 
