@@ -6,13 +6,13 @@ category: apprenticeship
 tags: [design-principles]
 ---
 
-From all the [SOLID](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)) principles, I think that the "O" is the most difficult to understand. The definition of the Open-Closed Principle (OCP) says that *Software entities (classes, modules, functions etc) should be open for extension, but closed for modification*. It seems logic, but if we think that we use the design principles in order to be able to adapt for future changes without having to modify the code base, that definition seems redundant. <!--more-->
+From all the [SOLID](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)) principles, I think that the "O" is the most difficult to understand. The definition of the Open-Closed Principle (OCP) says that *Software entities (classes, modules, functions etc) should be open for extension, but closed for modification*. It seems logic, but if we think that we use the design principles in order to be able to adapt for future changes without having to modify existing code, that definition seems redundant. <!--more-->
 
-But if we think only about the *software entities*, it makes more sense. The goal of using the design principles is to be able to extend our program without too much hassle, and in order to accomplish that, we need to make sure that each each function, each class, each package can also be extended without problem.
+But if we think only about the *software entities*, it makes more sense. The goal of using the design principles is to be able to extend our program without too much hassle, and in order to accomplish that, we need to make sure that each function, each class, each package can also be extended without problem.
 
 It might seem nonsensical the idea of extending a class without changing the existing code. What it means is that we can implement changes by *adding* code, instead of *changing* the existing one.
 
-While developing the HTTP server, I had a class named `Responder` (builds up the response to the client) depending on a `FileHandler` (builds up a HTML index page).
+While developing the HTTP server, I had a class named `Responder` (responsible for building up the response to the client) depending on a `FileHandler` (that builds up a HTML index page).
 
 I had something similar to this:
 
@@ -88,7 +88,7 @@ class Responder {
 }
 ```
 
-Now, `Responder` depends on something abstract and less likely to change. And, if I need to handle another kind of URI, I just create a new class that implements `IHandler`, without having to modify `FileHandler` or `Responder`.
+Now, `Responder` depends on something abstract and less likely to change (the `IHandler` interface). And, if I need to handle another URI, I just create a new class that implements `IHandler`, without having to modify `FileHandler` or `Responder`.
 
 ## When to use OCP
 
@@ -100,4 +100,4 @@ A violation of OCP is usually easy to identify: if a class depend on another con
 
 What that means is that we should let the change happen and then create an abstraction that would protect the entity against changes of that kind. Using the `Responder` example, it is protected against the need to implement new handlers, and only that &mdash; for now.
 
-Let's say that we are developing an application to be used in the command line. This application has a `Printer` class that prints out strings to the console. We know that we could be asked to change the app so that it can be used in web browsers. We could create an abstraction `Printer` that would be implemented by `ConsolePrinter` and `BrowserPrinter`, for instance. But, unless we know for some reason that it is a real possibility that the change is going to happen, we should not have the abstraction. It would be a lot of work for nothing, if the requirement never happens. And, instead of making things cleaner, we would end up creating unnecessary complexity.
+Let's say that we are developing an application to be used in the command line. This application has a `Printer` class that prints out strings to the console. We know that we could be asked to change the app so that it can be used in web browsers. We could create an abstraction `Printer` that would be implemented by `ConsolePrinter` and, in the future, be able to easily add a `BrowserPrinter`, for instance. But, unless we know for some reason that it is a real possibility that the change is going to happen, we should not have the abstraction. The requirement might never happen and, instead of making things cleaner, we would end up creating unnecessary complexity.
