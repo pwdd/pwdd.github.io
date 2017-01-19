@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Polymorphism in Scala - II - and the Liskov Substitution Principle"
+title:  "Polymorphism in Scala - II (the Liskov Substitution Principle")
 date:   2016-12-17 14:50:35 -0500
 category: apprenticeship
 tags: [scala]
