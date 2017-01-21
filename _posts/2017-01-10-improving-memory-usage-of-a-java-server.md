@@ -6,7 +6,7 @@ category: apprenticeship
 tags: [java]
 ---
 
-While building a toy HTTP server, it is possible to easily identify things that can impact its performance: how we read a file and send it through a socket is one of those things. There are many, many more variables to that equation if we are dealing with a *real world* server, but we at least get the basics right if while we have only a toy server. <!--more-->
+While building a toy HTTP server, it is possible to easily identify things that can impact its performance: how we read a file and send it through a socket is one of those things. There are many, many more variables to that equation if we are dealing with a *real world* server, but we at least get the basics right while we have only a toy server. <!--more-->
 
 Before digging into the performance issues, I'd like to put a thing out of the way: there are other ways to improve the speed of responses and memory usage. Using the `SocketChannel` from `java.nio` is just one of the available alternatives. However, the toy server I'm working on uses `java.io` and `java.net.Socket` classes.
 
