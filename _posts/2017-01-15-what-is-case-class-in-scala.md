@@ -6,7 +6,7 @@ category: apprenticeship
 tags: [scala]
 ---
 
-A quick answer to the question of the title of this post is: it allows us to use pattern matching when comparing its instances and it does not need the keyword `new` in order to initialize an instance. But why? How?<!--more-->
+A quick answer to the question of the title of this post is: it allows us to use pattern matching when comparing its instances and it does not need the keyword `new` in order be initialized. But why? How?<!--more-->
 
 ## Defining a case class
 
@@ -19,7 +19,7 @@ case class Human(mark: Symbol, messages: String) extends Player
 case object SuperEspecialPlayer extends Player
 ```
 
-When a case class is defined, the compiler will automatically create its companion object with a factory method, that will initialize instances of that class directly. That is the reason why we do not need the `new` keyword.
+When a case class is defined, the compiler automatically creates its companion object, that holds a factory method that initializes instances of that class. That is the reason why we do not need the `new` keyword.
 
 ```scala
 // (part of the) implicit companion object created by the compiler
@@ -29,9 +29,11 @@ object Computer {
 }
 ```
 
-By the way, a **companion object** is an object has exactly the same name and is defined in the same file that a class. It shares methods and even private fields with the parent class. And there is no need to worry about it when writing case classes. It is a compiler's job to do it.
+By the way, a **companion object** is an object has exactly the same name &mdash; and is defined in the same file &mdash; as a class. It shares methods and even private fields with the parent class.
 
-## Accessing `val`s
+There is no need to worry about it when writing case classes. It is a compiler's job to do it.
+
+## Accessing class members
 
 We can write a "regular" class like this:
 
@@ -55,7 +57,7 @@ f.number
 // 42
 ```
 
-With a case class, the argument is automatically defined as public `val`:
+With a case class, the argument is automatically defined as public `val`, a member of the given case class:
 
 ```scala
 // case class Computer(mark: Symbol) extends Player
@@ -84,7 +86,7 @@ anotherComputer.mark
 
 Because the arguments passed to a case class constructor are `val`s, they can cause a conflict between the extended class and the case class.
 
-In a "regular" class, if we do:
+In a "regular" class, we get an error when we do the following:
 
 ```scala
 class Foo(number: Int) {
@@ -93,7 +95,7 @@ class Foo(number: Int) {
 }
 ```
 
-What happens in here is that `number`, in the constructor, is a `val`, but it is not a **member of the class Foo**. That is why we cannot do
+What happens in here is that `number`, in the constructor, is a `val`, but it is not a **member of the class Foo**. That is why we cannot call it directly:
 
 ```scala
 class Foo(number: Int)
@@ -102,7 +104,7 @@ f.number
 // error: value 'number' is not a member of Foo
 ```
 
-Understanding this is helpful when we try to understand how to understand a class that has a constructor. For example:
+Understanding this is helpful when we need to extend a class that has a constructor. For example:
 
 ```scala
 // THIS WILL NOT WORK
@@ -115,14 +117,12 @@ case class Computer(mark: Symbol) extends Player(mark)
 // value 'mark' needs `override' modifier
 ```
 
-This happens because `mark` is a member of the class `Player` and, `Computer`, by extending `Player`, has access to it. When we say `case class Computer(mark: Symbol)` we are saying that `mark` is a member of `Computer`, and it should explicitly override the member of `Player`.
+This happens because `mark` is a member of the class `Player` and, `Computer`, by extending `Player`, has access to it. When we say `case class Computer(mark: Symbol)` we are saying that `mark` is a member of `Computer`, and, therefore, it should explicitly override the member of `Player`.
 
-It is just a matter of changing the name of the constructor, nothing more.
+Fixing this problem is just a matter of changing the name of the arguments passed to the constructor.
 
 ```scala
-abstract class Player(_mark: Symbol) {
-  val mark = _mark
-}
+abstract class Player(val mark: Symbol)
 
 case class Computer(renamedMark: Symbol) extends Player(renamedMark)
 
@@ -143,7 +143,7 @@ c1 == c2
 // true
 ```
 
-This means that we can use pattern matching when dealing with case classes.
+We can also use pattern matching when dealing with case classes.
 
 ```scala
 def currentPlayerMessage(player: Player): String = player match {
