@@ -80,7 +80,7 @@ anotherComputer.mark
 //-> 'o
 ```
 
-## Extending a case class with constructor
+## Overriding a constructor
 
 Because the arguments passed to a case class constructor are `val`s, they can cause a conflict between the extended class and the case class.
 
