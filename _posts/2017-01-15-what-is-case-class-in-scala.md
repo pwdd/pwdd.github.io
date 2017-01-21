@@ -55,13 +55,13 @@ f.number
 // 42
 ```
 
-With a case class, the argument is automatically defined as `val`:
+With a case class, the argument is automatically defined as public `val`:
 
 ```scala
 // case class Computer(mark: Symbol) extends Player
 val computerPlayer = Computer('x)
 computerPlayer.mark
-'x
+//-> 'x
 ```
 
 Because it is defined as a `val`, we cannot reassign it:
@@ -71,13 +71,64 @@ computerPlayer.mark = 'o
 // error: reassignment to val
 ```
 
-We can explicitly define the argument as a `var`, but that is not exactly a good idea. A case class is an **immutable class**. We can, however, make copies &mdash; which creates new objects.
+We can explicitly define the argument as a `var`, but that is not exactly a good idea. A case class is an **immutable class** (like `List`, for instance, that is also an immutable class). We can, however, make copies &mdash; which creates new objects.
 
 ```scala
 val computer = Computer('x)
 val anotherComputer = computer.copy(mark = 'o)
 anotherComputer.mark
-'o
+//-> 'o
+```
+
+## Extending a case class with constructor
+
+Because the arguments passed to a case class constructor are `val`s, they can cause a conflict between the extended class and the case class.
+
+In a "regular" class, if we do:
+
+```scala
+class Foo(number: Int) {
+  val number = number
+  // error: reassignment to val
+}
+```
+
+What happens in here is that `number`, in the constructor, is a `val`, but it is not a **member of the class Foo**. That is why we cannot do
+
+```scala
+class Foo(number: Int)
+val f = new Foo(2)
+f.number
+// error: value 'number' is not a member of Foo
+```
+
+Understanding this is helpful when we try to understand how to understand a class that has a constructor. For example:
+
+```scala
+// THIS WILL NOT WORK
+abstract class Player(_mark: Symbol) {
+  val mark = _mark
+}
+
+case class Computer(mark: Symbol) extends Player(mark)
+// error: overriding value 'mark' in class Player of type Symbol;
+// value 'mark' needs `override' modifier
+```
+
+This happens because `mark` is a member of the class `Player` and, `Computer`, by extending `Player`, has access to it. When we say `case class Computer(mark: Symbol)` we are saying that `mark` is a member of `Computer`, and it should explicitly override the member of `Player`.
+
+It is just a matter of changing the name of the constructor, nothing more.
+
+```scala
+abstract class Player(_mark: Symbol) {
+  val mark = _mark
+}
+
+case class Computer(renamedMark: Symbol) extends Player(renamedMark)
+
+val comp = Computer('o)
+com.mark
+//-> 'o
 ```
 
 ## Pattern Matching
