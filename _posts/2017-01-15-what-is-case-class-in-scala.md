@@ -16,6 +16,9 @@ One situation (not the *only* one) when case classes are useful is when we have 
 abstract class Player
 case class Computer(mark: Symbol) extends Player
 case class Human(mark: Symbol, messages: String) extends Player
+// a case class needs a list of parameters, even if it is empty
+case class SuperPlayer() extends Player
+// a case object - more about it in the end of this post
 case object SuperEspecialPlayer extends Player
 ```
 
@@ -151,4 +154,38 @@ def currentPlayerMessage(player: Player): String = player match {
   case Human(mark, _) => "Human is playing with " + mark
   case _ => "Game over"
 }
+```
+
+## Case object vs object
+
+In the first example of the case class use, there is a case object
+
+```scala
+case object SuperEspecialPlayer extends Player
+```
+
+There is not a lot of reason why we would rather use a case object instead of a "regular" object. But they are different from each other.
+
+Some of the differences include pretty printing and the ability to cast it to be a [`Serializable`](http://www.scala-lang.org/api/2.12.1/scala/Serializable.html) (just like case classes):
+
+```scala
+object Obj
+case object CaseObj
+
+val obj = Obj
+val caseObj = CaseObj
+
+// 1. pretty print
+println(obj)
+//-> $line1.$read$$iw$$iw$Obj$@1e12345
+
+println(caseObj)
+//-> CaseObj
+
+// 2. serialization
+obj.asInstanceOf[Serializable]
+//-> error: cannot be cast to scala.Serializable
+
+caseObj.asInstanceOf[Serializable]
+//-> Serializable = CaseObj
 ```
