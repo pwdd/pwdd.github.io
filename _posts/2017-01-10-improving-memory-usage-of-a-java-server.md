@@ -134,4 +134,4 @@ The last line explained:
 
 - **with points** puts all the dots (plus signs) in the graph, instead of using a regular line
 
-Then we just need to run `gnuplog <file.p>`. This will generate the graphic showing how long the responses take as the time goes on.
+Then we just need to run `gnuplot <file.p>`. This will generate the graphic showing how long the responses take as the time goes on.
