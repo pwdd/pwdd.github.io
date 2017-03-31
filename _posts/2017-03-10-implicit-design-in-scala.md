@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Implicit Design in Scala"
+title:  "Implicit Parameters in Scala"
 date:   2017-03-30 17:50:35 -0500
 category: apprenticeship
 tags: [scala]
