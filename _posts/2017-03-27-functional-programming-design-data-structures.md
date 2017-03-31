@@ -56,12 +56,10 @@ This is a slightly adapted version of the solution published in [Programming in 
 ```scala
 object Problem {
   type Column = Int
-  type Solution = List[Column]
-  def Solution(xs: Column*) = List(xs: _*)
 
-  def solutionFor(numberOfQueens: Int): Set[Solution] = {
-    def placeQueens(n: Int): Set[Solution] =
-      if (n == 0) Set(Solution())
+  def solutionFor(numberOfQueens: Int): Set[List[Column]] = {
+    def placeQueens(n: Int): Set[List[Column]] =
+      if (n == 0) Set(List())
       else
         for {
           // backtracking: for each partial solution
@@ -75,7 +73,7 @@ object Problem {
     placeQueens(numberOfQueens)
   }
 
-  def isSafe(col: Int, partialSolution: Solution): Boolean = {
+  def isSafe(col: Int, partialSolution: List[Column]): Boolean = {
     val row = partialSolution.length
     // associate columns (placed queens) with rows
     val queensWithRow = (row - 1 to 0 by -1) zip partialSolution

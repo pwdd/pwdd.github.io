@@ -18,7 +18,7 @@ add(add(20, 20), add(-3, 5)) = 42
 // add(   40     ,    2   )  = 42
 ```
 
-In the example above, we can get the returned `42` in any point we start the evaluation. There is no state being changed along the way to make the final result to be different.
+In the example above, we can get the answer `42` in any point we start the evaluation. There is no state being changed along the way to make the final result to be different.
 
 ## Reasoning about data
 
@@ -31,4 +31,4 @@ The idea is that we should think about separate the steps of a program in a way 
 
 We need to think about what we can prepare first, what we can prepare in parallel, what we have to prepare sequentially. This way, everything can happen independently and, when the dependency happens, we have a clear idea of what is going on at each step of the process.
 
-By doing this, we avoid errors in our program. The dependencies are clear and we know that changing the order in which the execution happens will throw an error (something needed to a given step has not yet been evaluated), while in imperative way we would have to investigate the changes in the state of something. 
+By doing this, we avoid errors in our program. The dependencies are clear and we know that changing the order in which the execution happens will throw an error (something needed to a given step has not yet been evaluated), while in imperative way we would have to investigate the changes in the state of something.
