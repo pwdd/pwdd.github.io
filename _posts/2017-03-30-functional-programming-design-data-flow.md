@@ -22,7 +22,7 @@ In the example above, we can get the answer `42` in any point we start the evalu
 
 ## Reasoning about data
 
-One might argue that it is easier to understand the world in an imperative way (*sequentially: do this, then do that*). But it is not that more difficult to think about the way the data is used by *this* and *that*. In a [brilliant article](http://www.lihaoyi.com/post/WhatsFunctionalProgrammingAllAbout.html) about functional programming, [Li Haoyi](http://www.lihaoyi.com/Resume/) uses a tiramisu recipe to show the difference between imperative and functional programming.
+One might argue that it is easier to understand the world in an imperative way (*sequentially: do this, then do that*). But it is not that more difficult to think about the way the data is used by *this* and *that*. In a [great article](http://www.lihaoyi.com/post/WhatsFunctionalProgrammingAllAbout.html) about functional programming, [Li Haoyi](http://www.lihaoyi.com/Resume/) uses a tiramisu recipe to show the difference between imperative and functional programming.
 
 The idea is that we should think about separate the steps of a program in a way that:
 
