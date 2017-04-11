@@ -94,7 +94,7 @@ The way we can make it happen is by declaring `ord` as an **implicit** parameter
 import math.Ordering
 
 // 'ord' is implicit
-def mergeSort[T](xs: List[T])(ord: Ordering[T]): List[T] = {
+def mergeSort[T](xs: List[T])(implicit ord: Ordering[T]): List[T] = {
   val n = xs.length/2
   if (n == 0) xs
   else {
